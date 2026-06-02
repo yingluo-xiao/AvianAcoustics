@@ -1,61 +1,50 @@
-# 🐦 AvianAcoustics Archive
+# AvianAcoustics Archive
 
-> **Quantifying the Ecological Cost of Human Expansion**
->
-> An open-source citizen science database measuring how urban architecture reshapes birdsong — comparing vertical (Hangzhou) vs. horizontal (Washington DC) acoustic environments.
+**Quantifying the Ecological Cost of Human Expansion**
 
-## 🎯 What This Is
+An open-source citizen science acoustic database comparing avian vocal adaptation in varying urban environments. This repository serves as the public data archive for raw audio recordings, spectrograms, and associated ecological metadata.
 
-A cross-city field study that treats urban birdsong adaptation as a **quantifiable proxy for ecological disruption**. By measuring two key vocal parameters — **minimum frequency (Hz)** and **inter-syllable interval (ms)** — across contrasting urban morphologies, we test the hypothesis that:
-
-- **Vertical cities** (high-rise canyons) induce **temporal adaptation** — birds widen syllable gaps to avoid reverberant overlap
-- **Horizontal cities** (sprawling traffic corridors) induce **spectral adaptation** — birds raise pitch to overcome broadband ground-level noise
-
-## 📊 Dataset
-
-| Recording | City | Group | Min Freq (Hz) | ISI (ms) | Ambient (dB) |
-|-----------|------|-------|---------------|----------|---------------|
-| HZ-001 | Hangzhou 杭州 | Vertical Reverb | 2,847 | 312 | 62.3 |
-| HZ-002 | Hangzhou 杭州 | Vertical Reverb | 2,962 | 287 | 58.7 |
-| DC-001 | Washington DC | Horizontal Noise | 3,614 | 198 | 67.1 |
-| DC-002 | Washington DC | Horizontal Noise | 3,891 | 176 | 71.2 |
-
-## 🛠 Tech Stack
-
-- **Frontend**: HTML5 + [Tailwind CSS v4](https://tailwindcss.com/) (CDN) + Vanilla JavaScript
-- **Hosting**: [GitHub Pages](https://pages.github.com/) (zero-cost, open-source-native)
-- **Analysis**: [Cornell Raven Pro 1.6](https://ravensoundsoftware.com/)
-- **Recording**: Zoom H5 + SGH-6 Shotgun Capsule
-
-## 📁 Project Structure
-
-```
-AvianAcoustics/
-├── index.html              ← Main single-page site
-├── style.css               ← Custom animations & styles
-├── script.js               ← Interactive logic
-├── data/
-│   └── recordings.json     ← Structured recording metadata
-├── assets/
-│   ├── spectrograms/       ← Raven Pro spectrogram exports
-│   └── audio/              ← WAV field recordings
-└── README.md               ← This file
-```
-
-## 🚀 How to Add New Recordings (5-Minute SOP)
-
-1. **Record** — Capture WAV audio in the field. Note GPS, ambient dB, time, and species.
-2. **Analyze** — Import into Raven Pro. Generate spectrogram. Measure min frequency (Hz) and inter-syllable interval (ms).
-3. **Export** — Save spectrogram screenshot → `assets/spectrograms/`. Save WAV clip → `assets/audio/`.
-4. **Update HTML** — Open `index.html`. Find the `<!-- TEMPLATE -->` comment. Copy an existing data card block and replace the values (location, date, dB, Hz, ms, file paths).
-5. **Publish** — Open GitHub Desktop → Commit → Push. The site updates globally within minutes.
-
-## 📜 License
-
-**Data & Content**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — Free for non-commercial academic use with attribution.
-
-**Code**: [MIT License](https://opensource.org/licenses/MIT)
+🌍 **Live Database Viewer**: [https://yingluo-xiao.github.io/AvianAcoustics](https://yingluo-xiao.github.io/AvianAcoustics)
 
 ---
 
-*Built with ♥ for Open Science*
+## 📊 Core Hypothesis
+
+Urban development induces measurable behavioral displacement in avian populations:
+- **Vertical Cities (e.g., Hangzhou)** induce temporal adaptation (extended inter-syllable pauses to avoid reverberant overlap in urban canyons).
+- **Horizontal Cities (e.g., Washington DC)** induce spectral adaptation (raised minimum frequency to overcome broadband ground-level traffic noise).
+
+These acoustic adaptations serve as a quantifiable proxy for ecological disruption—a biological externality that current ESG (Environmental, Social, and Governance) frameworks often fail to capture.
+
+## 📂 Repository Structure
+
+This repository houses the raw data collected during field observations. 
+
+```text
+AvianAcoustics/
+├── assets/
+│   ├── audio/           # Uncompressed raw WAV recordings (.wav)
+│   └── spectrograms/    # Generated 512-point FFT spectrograms (.png)
+├── data/
+│   └── recordings.json  # Structured metadata (Location, Date, Min Freq, ISI, Ambient Noise)
+└── index.html           # Static frontend for the Database Viewer
+```
+
+*Note: While the lightweight HTML frontend is included here for ease of access and GitHub Pages hosting, the primary purpose of this repository is the open distribution of the acoustic data.*
+
+## 🔬 Field Protocol & Methodology
+
+1. **Capture**: Audio is captured at dawn (05:30–07:00 local time) using a Zoom H5 Handy Recorder equipped with a Zoom SGH-6 Shotgun Capsule. Ambient noise (dB) is measured using a calibrated NIOSH SLM application.
+2. **Preprocessing**: Levels are normalized in Audacity. A high-pass filter is applied at 500 Hz to isolate the avian vocal range and remove low-frequency mechanical rumble.
+3. **Analysis**: Processed audio is imported into Cornell Lab's Raven Pro 1.6. Spectrograms are generated using a Hann window with a 512-point FFT.
+4. **Extraction**: Minimum frequency (Hz) and Inter-Syllable Intervals (ISI, ms) are manually measured via selection tables.
+
+## 📄 License and Usage
+
+We believe in open science and the democratization of ecological data. 
+
+- **Acoustic Data & Images**: All WAV files and spectrogram images in the `assets/` directory are released under the [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) license. You are free to use this data for academic and non-commercial research provided proper attribution is given.
+- **Source Code**: The frontend visualization code (HTML/CSS/JS) is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+---
+*A Citizen Science Initiative — Exploring the intersection of Urban Planning, ESG, and Bioacoustics.*
