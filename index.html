@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>AvianAcoustics Archive — Quantifying the Ecological Cost of Human Expansion</title>
+  <meta name="description" content="An open-source citizen science database quantifying urban acoustic ecology. Comparing avian vocal adaptation in vertical (Hangzhou) vs horizontal (Washington DC) urban environments.">
+  <meta name="keywords" content="urban ecology, bioacoustics, spectrogram, ESG, citizen science, bird song adaptation, urban planning">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AvianAcoustics Archive">
+  <meta property="og:description" content="Quantifying the Ecological Cost of Human Expansion through urban birdsong analysis.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Using serif for headings to give an academic paper feel, sans for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS v4 — Browser CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Tailwind v4 Theme Configuration -->
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Lora', Georgia, Cambria, "Times New Roman", Times, serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --color-cornell: #b31b1b;
+      --color-cornell-hover: #9a1717;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-stone-800 font-sans antialiased selection:bg-cornell/20">
+
+<!-- ════════════════════════════════════════════════
+     NAVIGATION
+     ════════════════════════════════════════════════ -->
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2 group">
+      <span class="text-cornell text-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 C2 12 5 4 12 4 C19 4 22 12 22 12"/><path d="M2 12 C2 12 5 20 12 20 C19 20 22 12 22 12"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+      </span>
+      <span class="text-sm font-bold tracking-widest text-stone-900 transition-colors uppercase">Avian Acoustics</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#database" class="text-sm font-medium text-stone-600 hover:text-cornell transition-colors">Database</a>
+      <a href="#esg" class="text-sm font-medium text-stone-600 hover:text-cornell transition-colors">ESG Context</a>
+      <a href="#methodology" class="text-sm font-medium text-stone-600 hover:text-cornell transition-colors">Methodology</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+         class="text-sm px-4 py-1.5 border-2 border-stone-200 rounded text-stone-700 font-medium hover:border-cornell hover:text-cornell transition-colors">
+        GitHub Source
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-toggle" class="md:hidden text-stone-500 hover:text-stone-900" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-200 px-6 py-4 space-y-4 shadow-lg">
+    <a href="#database" class="block text-sm font-medium text-stone-700 hover:text-cornell">Database</a>
+    <a href="#esg" class="block text-sm font-medium text-stone-700 hover:text-cornell">ESG Context</a>
+    <a href="#methodology" class="block text-sm font-medium text-stone-700 hover:text-cornell">Methodology</a>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════════
+     MODULE 1 — HERO SECTION
+     ════════════════════════════════════════════════ -->
+<section id="hero" class="pt-32 pb-20 md:pt-48 md:pb-32 px-6 bg-stone-50 border-b border-stone-200">
+  <div class="max-w-4xl mx-auto">
+    <p class="text-xs text-cornell font-mono mb-6 uppercase tracking-wider font-bold">Avian Acoustics Archive</p>
+    <h1 class="text-4xl md:text-5xl font-serif text-stone-900 mb-6 leading-tight">
+      Quantifying the Ecological Cost<br>of Human Expansion
+    </h1>
+    <p class="text-lg text-stone-600 mb-12 max-w-2xl leading-relaxed">
+      A citizen science initiative comparing urban birdsong adaptation. Measuring how vertical canyons (Hangzhou) vs. horizontal corridors (Washington DC) reshape avian vocal behavior.
+    </p>
+
+    <div class="bg-white border-l-4 border-cornell shadow-sm rounded-r-lg p-6 max-w-2xl">
+      <h2 class="text-sm font-bold text-stone-900 mb-2 uppercase tracking-wide">Core Hypothesis</h2>
+      <p class="text-sm text-stone-600 leading-relaxed">
+        <strong class="text-stone-900">Vertical cities</strong> induce temporal adaptation (extended inter-syllable pauses to avoid reverberant overlap). <strong class="text-stone-900">Horizontal cities</strong> induce spectral adaptation (raised minimum frequency to overcome broadband ground-level noise).
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     MODULE 2 — THE DATA ARCHIVE (TABLE FORMAT)
+     ════════════════════════════════════════════════ -->
+<section id="database" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div>
+        <h2 class="text-2xl font-serif text-stone-900 mb-2">Acoustic Database</h2>
+        <p class="text-sm text-stone-500">Click any row to view spectrogram and playback audio.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex gap-2">
+        <button class="filter-btn active px-4 py-2 text-xs font-mono font-bold rounded border border-stone-300 text-stone-600 hover:text-stone-900 hover:border-stone-400 transition-colors bg-white shadow-sm" data-filter="all">All</button>
+        <button class="filter-btn px-4 py-2 text-xs font-mono font-bold rounded border border-stone-300 text-stone-600 hover:text-stone-900 hover:border-stone-400 transition-colors bg-white shadow-sm" data-filter="HZ">Hangzhou</button>
+        <button class="filter-btn px-4 py-2 text-xs font-mono font-bold rounded border border-stone-300 text-stone-600 hover:text-stone-900 hover:border-stone-400 transition-colors bg-white shadow-sm" data-filter="DC">Washington DC</button>
+      </div>
+    </div>
+
+    <!-- Data Table Container -->
+    <div class="overflow-x-auto border border-stone-200 rounded bg-white shadow-sm">
+      <table id="data-table" class="w-full text-left text-sm whitespace-nowrap">
+        <thead class="bg-stone-50 text-xs text-stone-500 uppercase font-mono font-bold border-b border-stone-200">
+          <tr>
+            <th class="px-5 py-4 cursor-pointer hover:text-stone-800 select-none" data-sort>ID ↑↓</th>
+            <th class="px-5 py-4 cursor-pointer hover:text-stone-800 select-none" data-sort>City ↑↓</th>
+            <th class="px-5 py-4 cursor-pointer hover:text-stone-800 select-none" data-sort>Location ↑↓</th>
+            <th class="px-5 py-4 cursor-pointer hover:text-stone-800 select-none" data-sort>Date ↑↓</th>
+            <th class="px-5 py-4 cursor-pointer hover:text-stone-800 select-none" data-sort>Min Freq (Hz) ↑↓</th>
+            <th class="px-5 py-4 cursor-pointer hover:text-stone-800 select-none" data-sort>ISI (ms) ↑↓</th>
+            <th class="px-5 py-4">Action</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-stone-200 text-stone-700">
+
+          <!-- ╔══════════════════════════════════════════╗
+               ║  ROW 1: HZ-001                           ║
+               ╚══════════════════════════════════════════╝ -->
+          <tr class="data-row cursor-pointer transition-colors" data-group="HZ">
+            <td class="px-5 py-4 font-mono text-cornell font-bold">HZ-001</td>
+            <td class="px-5 py-4 font-medium text-stone-900">Hangzhou</td>
+            <td class="px-5 py-4 text-stone-600 truncate max-w-[200px]">Xihu Dist. · Urban Canyon</td>
+            <td class="px-5 py-4 font-mono text-stone-500">2025-07-15</td>
+            <td class="px-5 py-4 font-mono font-medium">2,847</td>
+            <td class="px-5 py-4 font-mono font-medium">312</td>
+            <td class="px-5 py-4 text-stone-400 text-xs italic">Click to expand</td>
+          </tr>
+          <!-- Detail View (Hidden by default) -->
+          <tr class="detail-row hidden bg-stone-50">
+            <td colspan="7" class="p-6 md:p-8 border-b border-stone-200 shadow-inner">
+              <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                  <h4 class="text-base font-bold text-stone-900 mb-2 font-serif">Species: Light-vented Bulbul (Pycnonotus sinensis)</h4>
+                  <p class="text-sm text-stone-600 mb-6 leading-relaxed max-w-lg">
+                    <strong class="text-stone-800">Context:</strong> High vertical reflection from 30+ story residential towers; narrow street canyon amplifies mid-frequency reverb. Ambient noise: 62.3 dB.
+                  </p>
+                  <audio controls class="w-full max-w-sm h-10 border border-stone-200 rounded" src="assets/audio/hz-001.wav" preload="none"></audio>
+                </div>
+                <div class="w-full md:w-80 shrink-0">
+                  <img src="assets/spectrograms/hz-001-spectrogram.png" alt="Spectrogram" class="w-full rounded border border-stone-200 bg-white object-cover shadow-sm" loading="lazy">
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- ╔══════════════════════════════════════════╗
+               ║  ROW 2: HZ-002                           ║
+               ╚══════════════════════════════════════════╝ -->
+          <tr class="data-row cursor-pointer transition-colors" data-group="HZ">
+            <td class="px-5 py-4 font-mono text-cornell font-bold">HZ-002</td>
+            <td class="px-5 py-4 font-medium text-stone-900">Hangzhou</td>
+            <td class="px-5 py-4 text-stone-600 truncate max-w-[200px]">Shangcheng · High-rise Corridor</td>
+            <td class="px-5 py-4 font-mono text-stone-500">2025-07-16</td>
+            <td class="px-5 py-4 font-mono font-medium">2,962</td>
+            <td class="px-5 py-4 font-mono font-medium">287</td>
+            <td class="px-5 py-4 text-stone-400 text-xs italic">Click to expand</td>
+          </tr>
+          <tr class="detail-row hidden bg-stone-50">
+            <td colspan="7" class="p-6 md:p-8 border-b border-stone-200 shadow-inner">
+              <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                  <h4 class="text-base font-bold text-stone-900 mb-2 font-serif">Species: Light-vented Bulbul (Pycnonotus sinensis)</h4>
+                  <p class="text-sm text-stone-600 mb-6 leading-relaxed max-w-lg">
+                    <strong class="text-stone-800">Context:</strong> Moderate vertical reflection between commercial towers; wider street reduces canyon effect but maintains reverb. Ambient noise: 58.7 dB.
+                  </p>
+                  <audio controls class="w-full max-w-sm h-10 border border-stone-200 rounded" src="assets/audio/hz-002.wav" preload="none"></audio>
+                </div>
+                <div class="w-full md:w-80 shrink-0">
+                  <img src="assets/spectrograms/hz-002-spectrogram.png" alt="Spectrogram" class="w-full rounded border border-stone-200 bg-white object-cover shadow-sm" loading="lazy">
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- ╔══════════════════════════════════════════╗
+               ║  ROW 3: DC-001                           ║
+               ╚══════════════════════════════════════════╝ -->
+          <tr class="data-row cursor-pointer transition-colors" data-group="DC">
+            <td class="px-5 py-4 font-mono text-cornell font-bold">DC-001</td>
+            <td class="px-5 py-4 font-medium text-stone-900">Washington DC</td>
+            <td class="px-5 py-4 text-stone-600 truncate max-w-[200px]">Rock Creek Park · Urban Edge</td>
+            <td class="px-5 py-4 font-mono text-stone-500">2025-07-18</td>
+            <td class="px-5 py-4 font-mono font-medium">3,614</td>
+            <td class="px-5 py-4 font-mono font-medium">198</td>
+            <td class="px-5 py-4 text-stone-400 text-xs italic">Click to expand</td>
+          </tr>
+          <tr class="detail-row hidden bg-stone-50">
+            <td colspan="7" class="p-6 md:p-8 border-b border-stone-200 shadow-inner">
+              <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                  <h4 class="text-base font-bold text-stone-900 mb-2 font-serif">Species: American Robin (Turdus migratorius)</h4>
+                  <p class="text-sm text-stone-600 mb-6 leading-relaxed max-w-lg">
+                    <strong class="text-stone-800">Context:</strong> Minimal vertical reflection; dominant horizontal noise from Connecticut Ave traffic corridor. Ambient noise: 67.1 dB.
+                  </p>
+                  <audio controls class="w-full max-w-sm h-10 border border-stone-200 rounded" src="assets/audio/dc-001.wav" preload="none"></audio>
+                </div>
+                <div class="w-full md:w-80 shrink-0">
+                  <img src="assets/spectrograms/dc-001-spectrogram.png" alt="Spectrogram" class="w-full rounded border border-stone-200 bg-white object-cover shadow-sm" loading="lazy">
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- ╔══════════════════════════════════════════╗
+               ║  ROW 4: DC-002                           ║
+               ╚══════════════════════════════════════════╝ -->
+          <tr class="data-row cursor-pointer transition-colors" data-group="DC">
+            <td class="px-5 py-4 font-mono text-cornell font-bold">DC-002</td>
+            <td class="px-5 py-4 font-medium text-stone-900">Washington DC</td>
+            <td class="px-5 py-4 text-stone-600 truncate max-w-[200px]">Georgetown Waterfront</td>
+            <td class="px-5 py-4 font-mono text-stone-500">2025-07-19</td>
+            <td class="px-5 py-4 font-mono font-medium">3,891</td>
+            <td class="px-5 py-4 font-mono font-medium">176</td>
+            <td class="px-5 py-4 text-stone-400 text-xs italic">Click to expand</td>
+          </tr>
+          <tr class="detail-row hidden bg-stone-50">
+            <td colspan="7" class="p-6 md:p-8 border-b border-stone-200 shadow-inner">
+              <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                  <h4 class="text-base font-bold text-stone-900 mb-2 font-serif">Species: American Robin (Turdus migratorius)</h4>
+                  <p class="text-sm text-stone-600 mb-6 leading-relaxed max-w-lg">
+                    <strong class="text-stone-800">Context:</strong> Open waterfront with strong horizontal noise from M Street traffic; water surface reflection adds broadband masking. Ambient noise: 71.2 dB.
+                  </p>
+                  <audio controls class="w-full max-w-sm h-10 border border-stone-200 rounded" src="assets/audio/dc-002.wav" preload="none"></audio>
+                </div>
+                <div class="w-full md:w-80 shrink-0">
+                  <img src="assets/spectrograms/dc-002-spectrogram.png" alt="Spectrogram" class="w-full rounded border border-stone-200 bg-white object-cover shadow-sm" loading="lazy">
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     MODULE 3 — ESG & POLICY BRIDGE
+     ════════════════════════════════════════════════ -->
+<section id="esg" class="py-20 md:py-32 bg-stone-50 border-t border-stone-200">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-serif text-stone-900 mb-8">ESG &amp; Policy Implications</h2>
+
+    <div class="bg-white border-l-4 border-cornell shadow-sm p-8 mb-12">
+      <p class="text-stone-800 italic leading-relaxed font-serif text-lg">
+        "The acoustic displacement observed in urban avian populations is a quantifiable proxy for the ecological disruption embedded in urban development. These biological externalities represent exactly the kind of cost that current ESG frameworks fail to capture."
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-sm font-bold text-stone-900 mb-3 uppercase tracking-wide">ESG Model Integration</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">
+          Acoustic displacement data can be embedded into the "Biodiversity Impact" pillar of ESG scoring. Institutional investors could assess the hidden biological externality cost of real estate portfolios through standardized acoustic monitoring.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-sm font-bold text-stone-900 mb-3 uppercase tracking-wide">Policy Recommendation</h3>
+        <p class="text-sm text-stone-600 leading-relaxed">
+          Urban zoning authorities could mandate pre-development acoustic ecology baselines. A threshold-based system (e.g., "no more than 200 Hz spectral shift") would incentivize sound-mitigating architectural design.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     MODULE 4 — METHODOLOGY & OPEN SOURCE
+     ════════════════════════════════════════════════ -->
+<section id="methodology" class="py-20 bg-white border-t border-stone-200">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-serif text-stone-900 mb-8">Methodology &amp; Protocol</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div>
+        <h3 class="text-sm font-bold text-stone-900 mb-4 uppercase tracking-wide">Equipment</h3>
+        <ul class="space-y-3 text-sm text-stone-600">
+          <li class="flex items-start gap-2"><span class="text-cornell font-bold mt-0.5">+</span> Zoom H5 Handy Recorder</li>
+          <li class="flex items-start gap-2"><span class="text-cornell font-bold mt-0.5">+</span> Zoom SGH-6 Shotgun Capsule</li>
+          <li class="flex items-start gap-2"><span class="text-cornell font-bold mt-0.5">+</span> NIOSH SLM App (Calibrated)</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-bold text-stone-900 mb-4 uppercase tracking-wide">Software Tools</h3>
+        <ul class="space-y-3 text-sm text-stone-600">
+          <li class="flex items-start gap-2"><span class="text-cornell font-bold mt-0.5">+</span> Cornell Lab Raven Pro 1.6</li>
+          <li class="flex items-start gap-2"><span class="text-cornell font-bold mt-0.5">+</span> Audacity 3.x (Preprocessing)</li>
+          <li class="flex items-start gap-2"><span class="text-cornell font-bold mt-0.5">+</span> HTML/CSS for static visualization</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-stone-50 p-8 border border-stone-200 mb-12">
+      <h3 class="text-sm font-bold text-stone-900 mb-6 uppercase tracking-wide">Field Protocol</h3>
+      <ol class="list-decimal list-outside ml-4 space-y-4 text-sm text-stone-600 marker:text-cornell marker:font-mono marker:font-bold">
+        <li class="pl-2">Capture WAV audio at dawn (05:30–07:00 local). Record GPS coordinates and ambient dB.</li>
+        <li class="pl-2">Normalize levels in Audacity. Apply high-pass filter at 500 Hz to isolate avian vocal range.</li>
+        <li class="pl-2">Import into Raven Pro. Generate spectrogram (Hann window, 512-point FFT).</li>
+        <li class="pl-2">Measure minimum frequency and inter-syllable intervals via selection tables.</li>
+      </ol>
+    </div>
+
+    <div class="text-sm text-stone-500 text-center">
+      <p>Data available under CC BY-NC 4.0. Source code under MIT License.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════ -->
+<footer class="py-12 bg-stone-900 text-stone-400 text-center border-t border-stone-800">
+  <div class="max-w-4xl mx-auto px-6">
+    <p class="text-sm font-serif mb-2 text-stone-300">
+      &copy; 2025 AvianAcoustics Archive
+    </p>
+    <p class="text-xs text-stone-500 uppercase tracking-widest font-mono">
+      A Citizen Science Initiative
+    </p>
+  </div>
+</footer>
+
+<!-- ─── Scripts ─── -->
+<script src="script.js"></script>
+
+</body>
+</html>

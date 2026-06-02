@@ -1,0 +1,38 @@
+/* AvianAcoustics Archive — Cornell Lab Inspired Styles */
+
+/* Light color scheme for native browser controls */
+:root {
+  color-scheme: light;
+  --cornell-red: #b31b1b;
+  --cornell-red-hover: #9a1717;
+  --cornell-red-alpha: rgba(179, 27, 27, 0.1);
+  --cornell-red-border: rgba(179, 27, 27, 0.3);
+}
+
+/* Nav background on scroll */
+.nav-scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Filter button active state */
+.filter-btn.active {
+  background: var(--cornell-red-alpha);
+  color: var(--cornell-red);
+  border-color: var(--cornell-red-border);
+}
+
+/* Table sort active column */
+th.sort-active {
+  color: var(--cornell-red);
+}
+
+/* Data row click hint */
+.data-row:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Selection color */
+::selection {
+  background: var(--cornell-red-alpha);
+}
